@@ -42,11 +42,11 @@ CREATE TABLE `bill_details` (
   `bill_detail_id` bigint NOT NULL AUTO_INCREMENT,
   `transaction_id` bigint DEFAULT NULL,
   `product_code` varchar(255) DEFAULT NULL,
-  `quantity` int NOT NULL
+  `quantity` int NOT NULL,
   PRIMARY KEY (`bill_detail_id`),
   KEY `transaction_id` (`transaction_id`),
   KEY `product_code` (`product_code`),
-  KEY `branch_code` (`branch_code`),
+
   CONSTRAINT `bill_details_ibfk_1` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`),
   CONSTRAINT `bill_details_ibfk_2` FOREIGN KEY (`product_code`) REFERENCES `products` (`product_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
