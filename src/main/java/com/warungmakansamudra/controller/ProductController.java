@@ -57,8 +57,8 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestBody @Valid UpdateProductRequest request) {
         try {
-            request.setProductId(id); // Set the productId from path variable
-            ProductResponse response = productService.updateProduct(request);
+            // Set the productId from path variable
+            ProductResponse response = productService.updateProduct(id,request);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ProductNotFoundException e) {
             logger.error("Product not found", e);

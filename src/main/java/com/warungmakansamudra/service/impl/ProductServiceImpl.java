@@ -82,12 +82,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional
     @Override
-    public ProductResponse updateProduct(UpdateProductRequest request) {
+    public ProductResponse updateProduct(Long productId, UpdateProductRequest request) {
         logger.info("Received request to update product: {}", request);
         validationService.validate(request);
 
-        Product product = productRepository.findById(request.getProductId())
-                .orElseThrow(() -> new ProductNotFoundException("Product with id " + request.getProductId() + " not found."));
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ProductNotFoundException("Product with id " + productId + " not found."));
 
         Branch branch = branchRepository.findById(request.getBranchId())
                 .orElseThrow(() -> new ProductNotFoundException("Branch with id " + request.getBranchId() + " not found."));

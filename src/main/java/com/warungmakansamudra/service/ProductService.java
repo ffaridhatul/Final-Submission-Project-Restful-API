@@ -12,6 +12,6 @@ public interface ProductService {
     ProductResponse getProductById(Long id); // Menggunakan Long
     List<ProductResponse> getAllProducts();
     List<ProductResponse> getAllProductsByBranchId(Long branchId); // Menggunakan Long
-    ProductResponse updateProduct(UpdateProductRequest request);
+    ProductResponse updateProduct(Long productId ,UpdateProductRequest request);
     void deleteProductById(Long id); // Menggunakan Long
 }
