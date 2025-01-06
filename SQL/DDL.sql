@@ -1,5 +1,5 @@
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
--- test
+--
 -- Host: localhost    Database: warung_makan_samudra
 -- ------------------------------------------------------
 -- Server version	9.0.1
