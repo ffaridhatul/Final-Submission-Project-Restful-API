@@ -1,0 +1,551 @@
+{
+	"info": {
+		"_postman_id": "2ca9d515-c8c1-48b5-b83e-377a31b3586c",
+		"name": "Warung Makan Samudra API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38921758"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "[Required] Add Product With Valid Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productCode\": \"01-003\",\n  \"productName\": \"Aneka Gorengan\",\n  \"price\": 1500,\n  \"branchId\": \"ec4fa172-cd64-4735-8f83-a09a2585bfde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Get Product By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products/bc05d565-2601-4f6c-ad9b-c871d8849776",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"bc05d565-2601-4f6c-ad9b-c871d8849776"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Get All Product by Branch Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products/ec4fa172-cd64-4735-8f83-a09a2585bfde",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"ec4fa172-cd64-4735-8f83-a09a2585bfde"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Optional] Get All Product with Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products?productCode=xxx&productName=xxx&minPrice=00&maxPrice=00&page=0&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "productCode",
+									"value": "xxx"
+								},
+								{
+									"key": "productName",
+									"value": "xxx"
+								},
+								{
+									"key": "minPrice",
+									"value": "00"
+								},
+								{
+									"key": "maxPrice",
+									"value": "00"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"\",\n  \"productCode\": \"\",\n  \"productName\": \"\",\n  \"price\": 0.00,\n  \"branchId\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Delete Product By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products/xxx",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"xxx"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Branch",
+			"item": [
+				{
+					"name": "[Required] Add Branch With Valid Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"branchCode\": \"0204\",\n  \"branchName\": \"Kuningan Tengah\",\n  \"address\": \"Jl. Kuningan Tengah No.XX\",\n  \"phoneNumber\": \"081234512312\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/api/branch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Get Branch By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/branch/xxx",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"branch",
+								"xxx"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Update Branch With Valid Data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"branchId\": \"\",\n  \"branchCode\": \"\",\n  \"branchName\": \"\",\n  \"address\": \"\",\n  \"phoneNumber\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/branch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Delete Branch with Valid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/branch/xxx",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"branch",
+								"xxx"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Get All Branch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/branch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Optional] Get Branch with Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/branch?branchCode=xxx&branchName=xxx&page=0&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"branch"
+							],
+							"query": [
+								{
+									"key": "branchCode",
+									"value": "xxx"
+								},
+								{
+									"key": "branchName",
+									"value": "xxx"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "[Required] Create Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transactionType\": \"TAKE_AWAY\",\n    \"receiptNumber\": \"10008\",\n    \"billDetails\": [\n        {\n            \"productCode\": \"P004\",\n            \"quantity\": 2\n        },\n        {\n            \"productCode\": \"P005\",\n            \"quantity\": 3\n        },\n        {\n            \"productCode\": \"P002\",\n            \"quantity\": 1\n        }\n    ],\n    \"branchCode\": \"B001\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Get All Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Get All Transaction with Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions?receiptNumber=10008&startDate=2025-01-06&endDate=2025-01-07&transType=TAKE_AWAY&productName=Nasi Goreng&page=0&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "receiptNumber",
+									"value": "10008"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-01-06"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-01-07"
+								},
+								{
+									"key": "transType",
+									"value": "TAKE_AWAY"
+								},
+								{
+									"key": "productName",
+									"value": "Nasi Goreng"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Get Transaction By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Required] Get Total Sales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/total-sales",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"total-sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Optional] Get Total Sales with Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/total-sales?startDate=2025-01-06&endDate=2025-01-07",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"total-sales"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2025-01-06"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-01-07"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
