@@ -1,14 +1,15 @@
-package com.warungmakansamudra.dto;
+package com.warungmakansamudra.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class BranchDto {
-    private Long id;
+@NoArgsConstructor
+public class RequestBranch {
+
+    private Long branchId;
     private String branchCode;
     private String branchName;
     private String address;
