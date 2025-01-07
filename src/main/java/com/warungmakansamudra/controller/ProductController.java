@@ -24,41 +24,34 @@ public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-
-    // Endpoint untuk menambahkan produk
     @PostMapping
     public ResponseEntity<ProductResponse> addProduct(@RequestBody CreateProductRequest request) {
         ProductResponse response = productService.addProduct(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    // Endpoint untuk mendapatkan produk berdasarkan ID
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponse> getProductById(@PathVariable Long id) {
         ProductResponse response = productService.getProductById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    // Endpoint untuk mendapatkan semua produk
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
         List<ProductResponse> response = productService.getAllProducts();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    // Endpoint untuk mendapatkan semua produk berdasarkan ID cabang
     @GetMapping("/branch/{branchId}")
     public ResponseEntity<List<ProductResponse>> getAllProductsByBranchId(@PathVariable Long branchId) {
         List<ProductResponse> response = productService.getAllProductsByBranchId(branchId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    // Endpoint untuk memperbarui produk
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestBody @Valid UpdateProductRequest request) {
+    @PutMapping
+    public ResponseEntity<ProductResponse> updateProduct(@RequestBody @Valid UpdateProductRequest request) {
         try {
-            // Set the productId from path variable
-            ProductResponse response = productService.updateProduct(id,request);
+            ProductResponse response = productService.updateProduct(request.getProductId(), request);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ProductNotFoundException e) {
             logger.error("Product not found", e);
@@ -69,7 +62,6 @@ public class ProductController {
         }
     }
 
-    // Endpoint untuk menghapus produk berdasarkan ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProductById(@PathVariable Long id) {
         productService.deleteProductById(id);

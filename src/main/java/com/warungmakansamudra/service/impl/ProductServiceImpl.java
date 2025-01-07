@@ -92,6 +92,7 @@ public class ProductServiceImpl implements ProductService {
         Branch branch = branchRepository.findById(request.getBranchId())
                 .orElseThrow(() -> new ProductNotFoundException("Branch with id " + request.getBranchId() + " not found."));
 
+        product.setId(productId);
         product.setProductCode(request.getProductCode());
         product.setProductName(request.getProductName());
         product.setPrice(request.getPrice());

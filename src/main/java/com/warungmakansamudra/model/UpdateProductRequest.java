@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class UpdateProductRequest {
 
+    @NotNull
+    private Long productId;
 
     @NotBlank
     private String productCode;
