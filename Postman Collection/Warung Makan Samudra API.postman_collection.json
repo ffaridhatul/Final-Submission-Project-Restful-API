@@ -93,7 +93,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/products?productCode=xxx&productName=xxx&minPrice=00&maxPrice=00&page=0&size=10",
+							"raw": "http://localhost:8080/api/products?productCode=P005&productName=Nasi Goreng&minPrice=5000.00&maxPrice=20000.00&page=0&size=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -106,19 +106,19 @@
 							"query": [
 								{
 									"key": "productCode",
-									"value": "xxx"
+									"value": "P005"
 								},
 								{
 									"key": "productName",
-									"value": "xxx"
+									"value": "Nasi Goreng"
 								},
 								{
 									"key": "minPrice",
-									"value": "00"
+									"value": "5000.00"
 								},
 								{
 									"key": "maxPrice",
-									"value": "00"
+									"value": "20000.00"
 								},
 								{
 									"key": "page",
