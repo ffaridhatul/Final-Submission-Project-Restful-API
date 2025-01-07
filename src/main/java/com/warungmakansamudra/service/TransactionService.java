@@ -17,4 +17,7 @@ public interface TransactionService {
     List<TransactionResponse> getTransactionsByType(TransactionType transactionType);
     List<TransactionResponse> getTransactionsByProductName(String productName);
     List<TransactionResponse> getFilteredTransactions(String receiptNumber, Date startDate, Date endDate, TransactionType transactionType, String productName);
+
+    double calculateTotalSales(Date startDate, Date endDate);
+
 }

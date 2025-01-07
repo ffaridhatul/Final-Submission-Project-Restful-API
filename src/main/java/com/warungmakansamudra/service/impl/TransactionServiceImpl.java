@@ -152,4 +152,13 @@ public class TransactionServiceImpl implements TransactionService {
                 .map(this::convertToTransactionResponse)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public double calculateTotalSales(Date startDate, Date endDate) {
+        if (startDate != null && endDate != null) {
+            return transactionRepository.calculateTotalSalesBetweenDates(startDate, endDate);
+        } else {
+            return transactionRepository.calculateTotalSales();
+        }
+    }
 }

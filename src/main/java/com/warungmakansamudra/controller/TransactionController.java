@@ -63,13 +63,21 @@ public class TransactionController {
     }
 
     @GetMapping("/filter")
-public ResponseEntity<List<TransactionResponse>> getFilteredTransactions(
-        @RequestParam(required = false) String receiptNumber,
-        @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
-        @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
-        @RequestParam(required = false) TransactionType transactionType,
-        @RequestParam(required = false) String productName) {
-    List<TransactionResponse> transactions = transactionService.getFilteredTransactions(receiptNumber, startDate, endDate, transactionType, productName);
-    return ResponseEntity.ok(transactions);
-}
+    public ResponseEntity<List<TransactionResponse>> getFilteredTransactions(
+            @RequestParam(required = false) String receiptNumber,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
+            @RequestParam(required = false) TransactionType transactionType,
+            @RequestParam(required = false) String productName) {
+        List<TransactionResponse> transactions = transactionService.getFilteredTransactions(receiptNumber, startDate, endDate, transactionType, productName);
+        return ResponseEntity.ok(transactions);
+    }
+
+    @GetMapping("/total-sales")
+    public ResponseEntity<Double> getTotalSales(
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
+        double totalSales = transactionService.calculateTotalSales(startDate, endDate);
+        return ResponseEntity.ok(totalSales);
+    }
 }

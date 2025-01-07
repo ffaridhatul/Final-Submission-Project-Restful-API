@@ -33,4 +33,11 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
             @Param("endDate") Date endDate,
             @Param("transactionType") TransactionType transactionType,
             @Param("productName") String productName);
+
+
+    @Query("SELECT SUM(t.totalPrice) FROM Transaction t")
+    double calculateTotalSales();
+
+    @Query("SELECT SUM(t.totalPrice) FROM Transaction t WHERE t.transactionDate BETWEEN :startDate AND :endDate")
+    double calculateTotalSalesBetweenDates(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }
