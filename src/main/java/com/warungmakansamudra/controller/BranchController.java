@@ -2,7 +2,10 @@ package com.warungmakansamudra.controller;
 
 import com.warungmakansamudra.entity.Branch;
 import com.warungmakansamudra.model.RequestBranch;
+import com.warungmakansamudra.payload.request.BranchRequest;
+import com.warungmakansamudra.payload.response.BranchResponse;
 import com.warungmakansamudra.service.BranchService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +25,19 @@ public class BranchController {
     private static final Logger logger = LoggerFactory.getLogger(BranchController.class);
 
     @PostMapping
-    public ResponseEntity<RequestBranch> addBranch(@RequestBody RequestBranch branchDto) {
-        logger.info("Received request to add branch: {}", branchDto);
+    public ResponseEntity<?> addBranch(@Valid @RequestBody BranchRequest request) {
+        logger.info("Received request to add branch: {}", request);
         try {
-            Branch branch = branchService.addBranch(convertToEntity(branchDto));
-            return ResponseEntity.ok(convertToDto(branch));
+            BranchResponse response = branchService.addBranch(request);
+            return ResponseEntity.status(response.getStatus()).body(response);
         } catch (Exception e) {
             logger.error("Error adding branch", e);
-            return ResponseEntity.status(500).body(null);
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RequestBranch> getBranchById(@PathVariable Long id) {
+    public ResponseEntity<?> getBranchById(@PathVariable Long id) {
         Branch branch = branchService.getBranchById(id);
         return ResponseEntity.ok(convertToDto(branch));
     }
@@ -54,9 +57,13 @@ public class BranchController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBranchById(@PathVariable Long id) {
-        branchService.deleteBranchById(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteBranchById(@PathVariable Long id) {
+        try {
+            BranchResponse response = branchService.deleteBranchById(id);
+            return ResponseEntity.status(response.getStatus()).body(response);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
     }
 
     private Branch convertToEntity(RequestBranch branchDto) {
